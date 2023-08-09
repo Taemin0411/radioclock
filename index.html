@@ -113,6 +113,16 @@
         let t9value
         let t10value
 
+        let tf1
+        let tf2
+        let tf3
+        let tf4
+        let tf5
+        let REAL
+        let radioName
+        let radioLink
+        let times
+
         function frf (e) {
             RadioFirst = e.value;
             console.log(RadioFirst)
@@ -130,50 +140,18 @@
             RadioFifth = e.value;
         }
 
-        t1.addEventListener("change", ()=>{
-            t1value = Number(t1.value)
-        })
-        t2.addEventListener("change", ()=>{
-            t2value = Number(t2.value)
-        })
-        t3.addEventListener("change", ()=>{
-            t3value = Number(t3.value)
-        })
-        t4.addEventListener("change", ()=>{
-            t4value = Number(t4.value)
-        })
-        t5.addEventListener("change", ()=>{
-            t5value = Number(t5.value)
-        })
-        t6.addEventListener("change", ()=>{
-            t6value = Number(t6.value)
-        })
-        t7.addEventListener("change", ()=>{
-            t7value = Number(t7.value)
-        })
-        t8.addEventListener("change", ()=>{
-            t6value = Number(t8.value)
-        })
-        t9.addEventListener("change", ()=>{
-            t9value = Number(t9.value)
-        })
-        t10.addEventListener("change", ()=>{
-            t10value = Number(t10.value)
-        })
-
-        console.log(t2value)
-
-        let tf1
-        let tf2
-        let tf3
-        let tf4
-        let tf5
-        let REAL
-        let radioName
-        let radioLink
-        let times
-
         btn.addEventListener("click", ()=>{
+            t1value = Number(t1.value)
+            t2value = Number(t2.value)
+            t3value = Number(t3.value)
+            t4value = Number(t4.value)
+            t5value = Number(t5.value)
+            t6value = Number(t6.value)
+            t7value = Number(t7.value)
+            t8value = Number(t8.value)
+            t9value = Number(t9.value)
+            t10value = Number(t10.value)
+            console.log(t2value)
             let hehe = document.querySelector("iframe")
             let haha = document.querySelector("h3")
             let nextRN
@@ -189,6 +167,16 @@
             let fffTime
             let ffffTime
             let fffffTime
+            console.log(t1value,t2value,t3value,t4value,t5value,t6value,t7value,t8value,t9value, t10value)
+            if(t1value == null || t2value == null || t3value == null || t4value == null || t5value == null || t6value == null || t7value == null || t8value == null || t9value == null || t10value == null){
+                alert("모든 항목은 채워져 있어야 합니다. 모든 항목을 채워 주세요!") 
+                return 0;
+            }
+            if(t2value!==t3value || t4value!==t5value || t6value!==t7value || t8value!==t9value){
+                alert("시간은 이어져야 합니다. 2번째 입력한 시간과 3번째 입력한 시간 등이 같은지 확인하세요!")
+                alert("시간을 건너뛰는 방법은 설명서에 소개되어 있습니다. [처음 오셨나요? 사용법을 알아보고 편하게 이용하세요.(글자 클릭)]을 클릭하세요.")
+                return 0;
+            }
             if(hehe == null && haha == null){
                 
             }
@@ -593,10 +581,10 @@
 
             var i
             var timea = today.getMinutes()
-            var h = fiTime*60 - time*60 + timea
-            var hh = ffTime*60 - time*60 + timea
-            var hhh = fffTime*60 - time*60 + timea
-            var hhhh = ffffTime*60 - time*60 + timea
+            var h = (fiTime*60 - time*60 + timea) * 60000
+            var hh = (ffTime*60 - time*60 + timea) * 60000
+            var hhh = (fffTime*60 - time*60 + timea) * 60000
+            var hhhh = (ffffTime*60 - time*60 + timea) * 60000
             //var hhhhh = fffffTime*60 - time*60 + timea
             console.log(h)
             var t = h*60000
@@ -617,7 +605,7 @@
                     iframe.style.width = "90%"
                     iframe.style.height = "100%"
                     iframe.style.border = "none"
-                }, ffTime)
+                }, h)
             }
 
             if(times > 1){
@@ -634,7 +622,7 @@
                     iframe.style.width = "90%"
                     iframe.style.height = "100%"
                     iframe.style.border = "none"
-                }, ffTime)
+                }, hh)
             }
 
             if(times > 2){
@@ -651,7 +639,7 @@
                     iframe.style.width = "90%"
                     iframe.style.height = "100%"
                     iframe.style.border = "none"
-                }, fffTime)
+                }, hhh)
             }
 
             if(times > 3){
@@ -668,7 +656,7 @@
                     iframe.style.width = "90%"
                     iframe.style.height = "100%"
                     iframe.style.border = "none"
-                }, ffffTime)
+                }, hhhh)
             }
 
             /*if(times > 3){
