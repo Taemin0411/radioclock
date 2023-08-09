@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RadiO'clock</title>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("bETChvfUc5XiJKdvB");
+    })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Gowun Dodum', sans-serif;
+    box-sizing: border-box;
+}
+body {
+    padding: 24px;
+}
+input, textarea, button {
+    margin: 4px 0;
+    padding: 8px;
+}
+textarea{
+    width: 90%;
+    height: 300px;
+}
+input{
+    width: 90%;
+}
+h1{
+    font-size: x-large;
+}
+</style>
+<body>
+    <div>
+        <h1>RadiO'Clock FeedBack</h1>
+        <input type="text" placeholder="이름" id="fullName" required/> <br />
+        <textarea placeholder="피드백을 제공하세요. 좋은 점, 보완이 필요한 점 등을 적어 주세요." id="message" required></textarea> <br />
+        <button onclick="sendMail()">개발자에게 보내기</button>
+    </div>
+</body>
+<script>
+    function sendMail(){
+        var params = {
+            from_name : document.getElementById("fullName").value,
+            message: document.getElementById("message").value
+        };
+
+        emailjs.send("service_481iedd", "template_n5zopmo", params).then(function (res) {
+            Swal.fire(
+            '보내기 성공!',
+            '개발자에게 피드백을 보냈습니다.',
+            'success'
+            )
+        }, function(error) {
+            Swal.fire({
+            icon: 'error',
+            title: '보내기 실패',
+            text: '피드백을 보내는 데 문제가 발생했습니다. 다시 시도해 보거나, 다음에 시도하십시오.',
+            footer: '<a href="https://www.emailjs.com/docs/sdk/send/">Why do I have this issue?</a>'
+            })
+        })}
+</script>
+</html>
