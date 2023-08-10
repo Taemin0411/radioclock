@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="icon" href="./img/favicon.ico" type="image/x-icon" sizes="16x16">
 </head>
 <body>
@@ -81,6 +82,13 @@
         }
     </style>
     <script>
+        Swal.fire({
+            imageUrl: './img/p1.png',
+            text: '[피드백을 작성해 프로그램에 기여하세요!]를 클릭해 피드백을 작성하세요! 여러분의 피드백이 필요합니다.',
+            imageWidth: 273,
+            imageHeight: 366,
+            imageAlt: 'Custom image',
+        })
         box = document.querySelector(".box")
         t1 = document.querySelector(".first-time1")
         t2 = document.querySelector(".first-time2")
