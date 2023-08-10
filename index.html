@@ -580,14 +580,15 @@
             }
 
             var i
+            var ftime = time + 1
+            console.log(ftime)
             var timea = today.getMinutes()
-            var h = (fiTime*60 - time*60 + timea) * 60000
-            var hh = (ffTime*60 - time*60 + timea) * 60000
-            var hhh = (fffTime*60 - time*60 + timea) * 60000
-            var hhhh = (ffffTime*60 - time*60 + timea) * 60000
+            var h = (fiTime*60 + (60-timea) - ftime*60) *60000
+            var hh = (ffTime*60 + (60-timea) - ftime*60) *60000
+            var hhh = (fffTime*60 + (60-timea) - ftime*60) *60000
+            var hhhh = (ffffTime*60 + (60-timea) - ftime*60) *60000
             //var hhhhh = fffffTime*60 - time*60 + timea
             console.log(h)
-            var t = h*60000
             var test = 10000
             console.log(times)
             
