@@ -8,7 +8,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="icon" href="./img/favicon.ico" type="image/x-icon" sizes="16x16">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+    <link rel="icon" href="./img/fabicon.ico" type="image/x-icon" sizes="16x16">
+    <script src="
+    https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
+    "></script>
 </head>
 <body>
     <h1>RADIO'CLOCK</h1>
@@ -54,9 +58,12 @@
     <button class="BTN" style="width: 76%; ">완료</button><br>
     <div class="cover">
         <div class="box"></div>
-    </div>
+    </div><br>
+    <footer>
+        <img src="./img/feedback_apps_logo/3.png" alt="3.png" class="dcookie" onclick="allDelCookies()">
+    </footer>
     <style>
-        *{
+        *:not(img){
             text-align: center;
             font-family: 'Gowun Dodum', sans-serif;
         }
@@ -72,7 +79,7 @@
             color: black;
             font-size: 10px;
         }
-        .info{ 
+        .info{
             border: 0.1px solid black;
             border-radius: 20px;
         }
@@ -80,12 +87,19 @@
             border-radius: 20px;
             border: 0.1px solid black;
         }
+        footer{
+            position: fixed;
+            bottom: 0;
+        }
+        img{
+            width: 100px;
+        }
     </style>
     <script>
         Swal.fire({
-            imageUrl: './img/p1.png',
-            text: '[피드백을 작성해 프로그램에 기여하세요!]를 클릭해 피드백을 작성하세요! 여러분의 피드백이 필요합니다.',
-            imageWidth: 273,
+            imageUrl: './img/poster1.png',
+            //text: '[피드백을 작성해 프로그램에 기여하세요!]를 클릭해 피드백을 작성하세요! 여러분의 피드백이 필요합니다.',
+            imageWidth: 274,
             imageHeight: 366,
             imageAlt: 'Custom image',
         })
@@ -106,6 +120,7 @@
         t10 = document.querySelector(".fifth-time2")
         fir = document.querySelector(".fifth-radio")
         btn = document.querySelector(".BTN")
+        Dcookie = document.querySelector(".dcookie")
         let RadioFirst
         let RadioSecond
         let RadioThird
@@ -121,7 +136,6 @@
         let t8value
         let t9value
         let t10value
-
         let tf1
         let tf2
         let tf3
@@ -131,6 +145,116 @@
         let radioName
         let radioLink
         let times
+        let date = new Date(Date.now() + 864000000e3)
+        console.log(date)
+        date = date.toUTCString()
+        var inputs = [t1, t2, t3, t4, t5, t6, t7, t8, t9, t10]
+        var inpots = ["t1", "t2", "t3", "t4", "t5", "t6", "t7", "t8", "t9", "t10"]
+        var rn = ["rn1", "rn2", "rn3", "rn4", "rn5"]
+        var ck = [,,,,,,,,,]
+        var rnck = [,,,,]
+        //$(inpots[i]).val(cookies[i])
+        const allCookies = document.cookie; 
+        console.log(allCookies)
+        console.log(typeof(ck[2]))
+
+        if(allCookies !== ""){
+            console.log("not all")
+            var i = 0
+            while(i < 10){
+                ck[i] = Cookies.get(inpots[i])
+                i += 1
+            }
+            i = 0
+            while(i < 5){
+                rnck[i] = Cookies.get(rn[i])
+                i += 1
+            }
+        }
+        else {
+            document.cookie = "t1='1'; express=" + date
+            document.cookie = "t2='1'; express=" + date
+            document.cookie = "t3='1'; express=" + date
+            document.cookie = "t4='1'; express=" + date
+            document.cookie = "t5='1'; express=" + date
+            document.cookie = "t6='1'; express=" + date
+            document.cookie = "t7='1; express=" + date
+            document.cookie = "t8='1'; express=" + date
+            document.cookie = "t9='1'; express=" + date
+            document.cookie = "t10='1'; express=" + date
+        }
+        
+        if(allCookies !== ""){
+            ck[0] = ck[0].replace("'", '')
+            ck[0] = ck[0].replace("'", "")
+            $(inputs[0]).val(ck[0])
+
+            ck[1] = ck[1].replace("'", '')
+            ck[1] = ck[1].replace("'", "")
+            $(inputs[1]).val(ck[1])
+
+            ck[2] = ck[2].replace("'", '')
+            ck[2] = ck[2].replace("'", "")
+            $(inputs[2]).val(ck[2])
+        
+            ck[3] = ck[3].replace("'", '')
+            ck[3] = ck[3].replace("'", "")
+            $(inputs[3]).val(ck[3])
+
+            ck[4] = ck[4].replace("'", '')
+            ck[4] = ck[4].replace("'", "")
+            $(inputs[4]).val(ck[4])
+
+            ck[5] = ck[5].replace("'", '')
+            ck[5] = ck[5].replace("'", "")
+            $(inputs[5]).val(ck[5])
+
+            ck[6] = ck[6].replace("'", '')
+            ck[6] = ck[6].replace("'", "")
+            $(inputs[6]).val(ck[6])
+        
+            ck[7] = ck[7].replace("'", '')
+            ck[7] = ck[7].replace("'", "")
+            $(inputs[7]).val(ck[7])
+
+            ck[8] = ck[8].replace("'", '')
+            ck[8] = ck[8].replace("'", "")
+            $(inputs[8]).val(ck[8])
+
+            ck[9] = ck[9].replace("'", '')
+            ck[9] = ck[9].replace("'", "")
+            $(inputs[9]).val(ck[9])
+        }
+
+        const allDelCookies = (domain, path) => {
+            // const doc = document;
+            domain = domain || document.domain;
+            path = path || '/';
+
+            const cookies = document.cookie.split('; '); // 배열로 반환
+            console.log(cookies);
+            const expiration = 'Sat, 01 Jan 1972 00:00:00 GMT';
+
+            // 반목문 순회하면서 쿠키 전체 삭제
+            if (!document.cookie) {
+                Swal.fire({
+                text: '삭제할 기록이 없습니다.',
+                icon: 'error'
+                })
+            } else {
+                for (i = 0; i < cookies.length; i++) {
+                // const uname = cookies[i].split('=')[0];
+                // document.cookie = `${uname}=; expires=${expiration}`;
+                document.cookie = cookies[i].split('=')[0] + '=; expires=' + expiration;
+                $("*").val("")
+                // document.cookie = cookies[i].split('=')[0] + '=; expires=' + expiration + '; domain =' + domain;
+                }
+                Swal.fire({
+                text: '시간 기록이 삭제되었습니다!',
+                icon: 'success'
+                })
+            }
+        };
 
         function frf (e) {
             RadioFirst = e.value;
@@ -161,6 +285,39 @@
             t9value = Number(t9.value)
             t10value = Number(t10.value)
             console.log(t2value)
+            if(t1value !== ck[0]){
+                document.cookie = "t1=" + t1value
+            }
+            if(t2value !== ck[1]){
+                document.cookie = "t2=" + t2value
+            }
+            if(t3value !== ck[2]){
+                document.cookie = "t3=" + t3value
+            }
+            if(t4value !== ck[3]){
+                document.cookie = "t4=" + t4value
+            }             
+            if(t5value !== ck[4]){
+                document.cookie = "t5=" + t5value
+            }
+            if(t6value !== ck[5]){
+                document.cookie = "t6=" + t6value
+            }
+            if(t7value !== ck[6]){
+                document.cookie = "t7=" + t7value
+            }
+            if(t8value !== ck[7]){
+                document.cookie = "t8=" + t8value
+            }
+            if(t9value !== ck[8]){
+                document.cookie = "t9=" + t9value
+            }
+            if(t10value !== ck[9]){
+                document.cookie = "t10=" + t10value
+            }
+            if(RadioFirst !== rnck[0]){
+                document.cookie = "rn1=" + RadioFirst
+            }
             let hehe = document.querySelector("iframe")
             let haha = document.querySelector("h3")
             let nextRN
